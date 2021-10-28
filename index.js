@@ -4,6 +4,7 @@ const app = express();
 
 const userRouter = require('./routers/UserRouter')
 
+// Check message json, attach to request.body 
 app.use(express.json());
 app.use('/user', userRouter);
 
