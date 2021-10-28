@@ -1,12 +1,16 @@
+require('dotenv').config()
 const express = require('express');
 const app = express();
 
-const port = 8080;
+const userRouter = require('./routers/UserRouter')
+
+app.use(express.json());
+app.use('/user', userRouter);
 
 app.get('/', (req, res) => {
     res.status(200).json({message: 'Hello World!'});
 })
 
-app.listen(port, () => {
-    console.log(`App started on port ${port}`);
+app.listen(process.env.PORT, () => {
+    console.log(`App running on port ${process.env.PORT}`);
 })
