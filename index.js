@@ -55,16 +55,15 @@ class Handler {
 
 //starting the server
 function main () {
-    let app = express();
     let handlers = new Handler();
     app.use(express.json());
-    app.use('/user', userRouter);
-    app.use('/address', addressRouter);
     app.use(bodyParser.urlencoded({
         extended: true
     }));
     app.use(bodyParser.json());
-
+    // routers and handlers
+    app.use('/user', userRouter);
+    app.use('/address', addressRouter);
     app.post('/login', handlers.login);
     app.get('/', token.checkToken, handlers.index);
     app.listen(process.env.PORT, () => {
