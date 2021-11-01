@@ -1,3 +1,5 @@
+
 module.exports = {
-    secret = "worldisfullofdevelopers"
+
+    secret: process.env.secret
 };
